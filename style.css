@@ -1,0 +1,18 @@
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 60px;
+  text-align: center;
+  background: rgb(40, 40, 40);
+  color: white;
+  font-size: 30px;
+}
+
+.content {padding:20px;}
+
+.rightsdiv
