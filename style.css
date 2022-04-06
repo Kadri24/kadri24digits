@@ -1,18 +1,173 @@
-/* Style the body */
-body {
-  font-family: Arial;
+body, html {
+  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
-/* Header/Logo Title */
-.header {
-  padding: 60px;
-  text-align: center;
-  background: rgb(40, 40, 40);
+.bg {
+  background-image: url("images/background.gif");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: -68px;
+}
+
+.centredh1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: white;
-  font-size: 30px;
+  text-align: center;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 50px;
 }
 
-.content {padding:20px;}
+.blackbg{
+  background-color: rgb(10, 10, 10);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-.rightsdiv
+.titlecenter {
+  text-align: center;
+  left: 50%;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 30px;
+  padding-top: 30px;
+}
+
+p {
+  font-family: 'Trebuchet MS';
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* header */
+
+* {box-sizing: border-box; padding-right: 10px;}
+
+.header {
+  overflow: hidden;
+  background-color: rgb(10, 10, 10);
+  padding: 10px 5px;
+}
+
+.header a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+  font-family: 'Trebuchet MS';
+}
+
+.logo {
+  height: 50px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
+
+.header a:hover {
+  background-color: rgb(100, 100, 100);
+  color: black;
+}
+
+.header a.active {
+  background-color: rgb(50, 50, 50);
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .header-right {
+    float: none;
+  }
+}
+
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 100%;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container .btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 1);
+  color: black;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.copyright {
+  text-align: center;
+  background-color: rgb(10, 10, 10);
+  color: white;
+  padding: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(10,10,10);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
