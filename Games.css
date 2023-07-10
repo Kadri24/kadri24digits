@@ -1,180 +1,73 @@
+ .u-section-1 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("images/RobloxScreenShot20230709_215424508.png?rand=a8e3");
+}
+
 .u-section-1 .u-sheet-1 {
-  min-height: 400px;
+  min-height: 100vh;
+}
+
+.u-section-1 .u-text-1 {
+  margin: 60px auto;
+}
+
+@media (max-width: 1199px) {
+   .u-section-1 {
+    background-position: 50% 50%;
+  }
 } .u-section-2 {
   background-image: none;
 }
 
 .u-section-2 .u-sheet-1 {
-  min-height: 239px;
+  min-height: 297px;
+}
+
+.u-section-2 .u-image-1 {
+  width: 207px;
+  height: 207px;
+  margin: 45px auto 0 30px;
 }
 
 .u-section-2 .u-text-1 {
-  margin: 30px auto 0;
+  font-size: 1.875rem;
+  margin: -156px auto 0;
 }
 
-.u-section-2 .u-text-2 {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 60px;
+.u-section-2 .u-btn-1 {
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: 30px auto 60px;
+}
+
+@media (max-width: 575px) {
+  .u-section-2 .u-text-1 {
+    margin-left: 0;
+    margin-right: 0;
+  }
 } .u-section-3 {
   background-image: none;
 }
 
 .u-section-3 .u-sheet-1 {
-  min-height: 692px;
-}
-
-.u-section-3 .u-layout-wrap-1 {
-  margin: 60px auto;
-}
-
-.u-section-3 .u-image-1 {
-  background-image: linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("images/eyeslogo.png");
-  background-position: 50% 50%;
-  min-height: 572px;
-}
-
-.u-section-3 .u-container-layout-1 {
-  padding: 30px 60px;
+  min-height: 390px;
 }
 
 .u-section-3 .u-text-1 {
-  margin: 152px auto 0 0;
+  margin: 60px auto 0;
 }
 
 .u-section-3 .u-text-2 {
-  margin: 20px 0 0;
+  margin: 29px auto 0;
 }
 
 .u-section-3 .u-btn-1 {
+  font-size: 0.875rem;
+  letter-spacing: 1px;
   background-image: none;
-  margin: 13px auto 0 0;
-}
-
-.u-section-3 .u-image-2 {
-  background-image: url("images/PTlogo2.png");
-  background-position: 50% 50%;
-  min-height: 572px;
-}
-
-.u-section-3 .u-container-layout-2 {
-  padding: 30px 60px;
-}
-
-.u-section-3 .u-text-3 {
-  margin: 0 auto 0 0;
-}
-
-.u-section-3 .u-text-4 {
-  margin: 20px 0 0;
-}
-
-.u-section-3 .u-btn-2 {
-  margin-left: 0;
-  margin-right: 0;
-  background-image: none;
-  margin-top: 20px;
-}
-
-@media (max-width: 1199px) {
-  .u-section-3 .u-sheet-1 {
-    min-height: 592px;
-  }
-
-  .u-section-3 .u-layout-wrap-1 {
-    margin-right: initial;
-    margin-left: initial;
-  }
-
-  .u-section-3 .u-image-1 {
-    min-height: 472px;
-  }
-
-  .u-section-3 .u-image-2 {
-    min-height: 472px;
-  }
-}
-
-@media (max-width: 991px) {
-  .u-section-3 .u-sheet-1 {
-    min-height: 482px;
-  }
-
-  .u-section-3 .u-image-1 {
-    min-height: 362px;
-  }
-
-  .u-section-3 .u-container-layout-1 {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .u-section-3 .u-image-2 {
-    min-height: 362px;
-  }
-
-  .u-section-3 .u-container-layout-2 {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-
-@media (max-width: 767px) {
-  .u-section-3 .u-sheet-1 {
-    min-height: 1206px;
-  }
-
-  .u-section-3 .u-image-1 {
-    min-height: 543px;
-  }
-
-  .u-section-3 .u-container-layout-1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .u-section-3 .u-image-2 {
-    min-height: 543px;
-  }
-
-  .u-section-3 .u-container-layout-2 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-}
-
-@media (max-width: 575px) {
-  .u-section-3 .u-sheet-1 {
-    min-height: 804px;
-  }
-
-  .u-section-3 .u-image-1 {
-    min-height: 342px;
-  }
-
-  .u-section-3 .u-image-2 {
-    min-height: 342px;
-  }
-} .u-section-4 {
-  background-image: none;
-}
-
-.u-section-4 .u-sheet-1 {
-  min-height: 239px;
-}
-
-.u-section-4 .u-text-1 {
-  --animation-custom_in-scale: 1;
-  margin: 30px auto 0;
-}
-
-.u-section-4 .u-text-2 {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 60px;
-  --animation-custom_in-translate_x: 0px;
-  --animation-custom_in-translate_y: 0px;
-  --animation-custom_in-opacity: 0;
-  --animation-custom_in-rotate: 0deg;
-  --animation-custom_in-scale: 1;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: 29px auto 60px;
 }
