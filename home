@@ -19,10 +19,10 @@
             </div>
             <ul class="nav-links">
                 <li><a href="./home">Home</a></li>
-                <li><a href="#" class="listtext" >Games</a></li>
-                <li><a href="#" class="listtext">Shop</a></li>
-                <li><a href="#" class="listtext">Socials</a></li>
-                <li><a href="#" class="listtext">Contact</a></li>
+                <li><a href="./error" class="listtext">Games</a></li>
+                <li><a href="./error" class="listtext">Shop</a></li>
+                <li><a href="./error" class="listtext">Socials</a></li>
+                <li><a href="./error" class="listtext">Contact</a></li>
             </ul>
             <div class="burger-menu" style="color: #fff; font-size: 20px;">&#9776;</div>
         </nav>

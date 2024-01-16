@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="shortcut icon" href="images/logokadri.ico" type="image/x-icon">
-        <script src="script.js"></script>
-        <title>Kadri24 Digits</title>
-    </head>
-    <body>
-        
-    </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="images/logokadri.ico" type="image/x-icon">
+    <script src="script.js"></script>
+    <title>Kadri24 Digits</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logokadri.png" alt="Logo"
+                        style="width: 24px; transform: scale(2); margin-left: 20px;">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="./home" class="listtext">Home</a></li>
+                <li><a href="./error" class="listtext">Games</a></li>
+                <li><a href="./error" class="listtext">Shop</a></li>
+                <li><a href="./error" class="listtext">Socials</a></li>
+                <li><a href="./error" class="listtext">Contact</a></li>
+            </ul>
+            <div class="burger-menu" style="color: #fff; font-size: 20px;">&#9776;</div>
+        </nav>
+    </header>
+    <div id="loading-overlay">
+        <div id="loading-spinner">
+            <img src="images/logokadri.png" style="width: 20vh;" alt="loading">
+        </div>
+    </div>
+    <div style="height: 100vh;">
+        <img src="images/logokadri.png" alt="kadri24digits" style="display: block; height: 100px; position: relative; top: 50%; margin-left: auto; margin-right: auto;">
+        <h1 style="font-size: 36px; display: block; height: 100px; position: relative; top: 50%; margin-left: auto; margin-right: auto; text-align: center;">Work in progress...</h2>
+    </div>
+</body>
+
 </html>

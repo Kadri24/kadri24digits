@@ -1,26 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector('.nav-links');
     const burgerMenu = document.querySelector('.burger-menu');
-    const bgElement = document.querySelector('.bg');
     const loadingOverlay = document.getElementById('loading-overlay');
 
-    // List of background images
-    const backgroundImages = [
-        "images/backgrounds/eyes1.png",
-        "images/backgrounds/eyes2.png",
-        "images/backgrounds/eyes3.png",
-        "images/backgrounds/eyes4.png",
-        "images/backgrounds/eyes5.png"
-    ];
-
-
-    // Function to set a random background image
-    function setRandomBackground() {
-        const randomIndex = Math.floor(Math.random() * backgroundImages.length);
-        const randomImage = backgroundImages[randomIndex];
-        
-        bgElement.style.backgroundImage = `url("${randomImage}")`;
-    }
 
     // Function to hide the loading overlay
     function hideLoadingOverlay() {
@@ -33,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500); // Adjust the duration to match the transition duration in CSS
     }
 
-    // Call the function to set a random background on page load
-    setRandomBackground();
 
     // Introduce a 1-second delay before hiding the loading overlay
     setTimeout(hideLoadingOverlay, 1000);
