@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="shortcut icon" href="images/logokadri.ico" type="image/x-icon">
-    <title>Kadri24 Digits - Home</title>
+    <script src="script.js"></script>
+    <title>Kadri24 Digits</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -16,11 +18,11 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Games</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Socials</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="./home">Home</a></li>
+                <li><a href="#" class="listtext" >Games</a></li>
+                <li><a href="#" class="listtext">Shop</a></li>
+                <li><a href="#" class="listtext">Socials</a></li>
+                <li><a href="#" class="listtext">Contact</a></li>
             </ul>
             <div class="burger-menu" style="color: #fff; font-size: 20px;">&#9776;</div>
         </nav>
@@ -41,21 +43,21 @@
         <div class="grid-container" style="width: 100%; height: 30%; position: absolute;">
             <div class="grid-item" style="background-image: url(images/backgrounds/eyes1.png); background-size: cover; background-position: center">
                 <a href="https://www.roblox.com/games/1985320156/">
-                    <h4 class="selector" style="position: relative; top: 60%; text-align: center;">Play</h4>
+                    <h4 class="selector" style="position: relative; top: 50%; text-align: center;">Play</h4>
                 </a>
-                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative;">Eyes - The Horror Game</h3>
+                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative; color: #ffffff;">Eyes - The Horror Game</h3>
             </div>
             <div class="grid-item" style="background-image: url(images/backgrounds/infiniteobby.png); background-size: cover; background-position: center">
                 <a href="https://www.roblox.com/games/1985320156/">
-                    <h4 class="selector" style="position: relative; top: 60%; text-align: center;">Play</h4>
+                    <h4 class="selector" style="position: relative; top: 50%; text-align: center;">Play</h4>
                 </a>
-                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative;">Infinite Obby</h3>
+                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative; color: #ffffff;">Infinite Obby</h3>
             </div>
             <div class="grid-item" style="background-image: url(images/backgrounds/pt2.png); background-size: cover; background-position: center;">
                 <a href="https://www.roblox.com/games/1985320156/">
-                    <h4 class="selector" style="position: relative; top: 60%; text-align: center;">Play</h4>
+                    <h4 class="selector" style="position: relative; top: 50%; text-align: center;">Play</h4>
                 </a>
-                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative;">P.T.</h3>
+                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative; color: #ffffff;">P.T.</h3>
             </div>  
           </div>
     </div>
@@ -63,7 +65,5 @@
     <footer>
         <p>&copy; 2024 <a href="https://kadri24digits.com" style="color: #007baf;">kadri24digits.com</a>. All rights reserved.</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
