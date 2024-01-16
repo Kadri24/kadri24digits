@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
 
-    // Check if the screen size changes
+    // Check if the screen size changesa
     window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             // If the screen is larger than 768px, set opacity to visible
