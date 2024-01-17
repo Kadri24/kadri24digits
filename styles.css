@@ -140,6 +140,15 @@ footer {
     grid-row-gap: 0px;
 }
 
+.socialdiv {
+    height: 100vh;
+    padding-top: 100px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
   }
@@ -217,7 +226,14 @@ footer {
         position: relative;
         color: #ffffff;
       }
-
+      .socialdiv {
+        height: 100vh;
+        padding-top: 100px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
       .socialgrid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -296,6 +312,15 @@ footer {
         padding: 0;
         position: relative;
       }
+
+      .socialdiv {
+        height: 100vh;
+        padding-top: 100px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
 
       .socialgrid {
         display: grid;
