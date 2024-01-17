@@ -132,6 +132,14 @@ footer {
     background-position: center;
 }
 
+.socialgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
   }
@@ -145,7 +153,7 @@ footer {
   ::-webkit-scrollbar-thumb:hover {
     
     background: #555; 
-  } 
+  }
 
 /* Larger screens (desktops) */
 @media screen and (min-width: 769px) {
@@ -209,6 +217,14 @@ footer {
         position: relative;
         color: #ffffff;
       }
+
+      .socialgrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
 }
 
 /* Mobile screens */
@@ -276,6 +292,14 @@ footer {
         padding: 0;
         position: relative;
       }
+
+      .socialgrid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+    }
 
       .div1 {
         height: 100vh;
