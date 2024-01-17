@@ -316,10 +316,10 @@ footer {
       .socialdiv {
         height: 100vh;
         padding-top: 100px;
-        width: 90%;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        width: auto;
     }
 
       .socialgrid {
