@@ -20,11 +20,11 @@
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="./home.html" class="listtext">Home</a></li>
-                <li><a href="./error.html" class="listtext">Games</a></li>
-                <li><a href="./error.html" class="listtext">Shop</a></li>
-                <li><a href="./error.html" class="listtext">Socials</a></li>
-                <li><a href="./error.html" class="listtext">Contact</a></li>
+                <li><a href="./home" class="listtext">Home</a></li>
+                <li><a href="./error" class="listtext">Games</a></li>
+                <li><a href="./error" class="listtext">Shop</a></li>
+                <li><a href="./error" class="listtext">Socials</a></li>
+                <li><a href="./error" class="listtext">Contact</a></li>
             </ul>
             <div class="burger-menu" style="color: #fff; font-size: 20px;">&#9776;</div>
         </nav>
