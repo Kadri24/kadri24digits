@@ -128,7 +128,7 @@ footer {
     background-repeat: no-repeat;
     height: 50%;
     /* Set a default background image or color here */
-    background-image: url("images/backgrounds/eyes1.png");
+    background-image: url("images/backgrounds/eyes0.png");
     background-position: center;
 }
 
@@ -148,6 +148,26 @@ footer {
     margin-right: auto;
     text-align: center;
 }
+
+.gamescontainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.gamesdiv {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .grid-item {
+    background-color: #f2f2f2;
+    text-align: center;
+  }
 
 ::-webkit-scrollbar {
     width: 10px;

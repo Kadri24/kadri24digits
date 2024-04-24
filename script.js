@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelector('.nav-links');
     const burgerMenu = document.querySelector('.burger-menu');
     const loadingOverlay = document.getElementById('loading-overlay');
-
+    const backgrounds = ['eyes0.png', 'eyes1.png', 'eyes2.png', 'eyes3.png', 'eyes4.png', 'eyes5.png'];
 
     // Function to hide the loading overlay
     function hideLoadingOverlay() {
@@ -15,9 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500); // Adjust the duration to match the transition duration in CSS
     }
 
+    // Function to select a random background image
+    function setRandomBackground() {
+        const randomIndex = Math.floor(Math.random() * backgrounds.length);
+        const randomBackground = backgrounds[randomIndex];
+        const imageUrl = `url("images/backgrounds/${randomBackground}")`;
+        document.querySelector('.bg').style.backgroundImage = imageUrl;
+    }
 
     // Introduce a 1-second delay before hiding the loading overlay
     setTimeout(hideLoadingOverlay, 1000);
+    
+    // Set random background on page load
+    setRandomBackground();
 
     burgerMenu.addEventListener('click', function () {
         if (navLinks.classList.contains('show')) {
@@ -39,9 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    
-
-    // Check if the screen size changesa
+    // Check if the screen size changes
     window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             // If the screen is larger than 768px, set opacity to visible
