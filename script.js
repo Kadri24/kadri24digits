@@ -8,26 +8,30 @@ document.addEventListener("DOMContentLoaded", function () {
     function hideLoadingOverlay() {
         // Set opacity to 0 to initiate the fade-out transition
         loadingOverlay.style.opacity = 0;
-    
+
         // Wait for the transition to complete before hiding the overlay
         setTimeout(() => {
             loadingOverlay.style.display = 'none';
         }, 500); // Adjust the duration to match the transition duration in CSS
     }
 
-    // Function to select a random background image
+    // Function to select a random background image and apply it to elements with the "bg" class
     function setRandomBackground() {
         const randomIndex = Math.floor(Math.random() * backgrounds.length);
         const randomBackground = backgrounds[randomIndex];
         const imageUrl = `url("images/backgrounds/${randomBackground}")`;
-        document.querySelector('.bg').style.backgroundImage = imageUrl;
+        document.querySelectorAll('.bg').forEach(element => {
+            element.style.backgroundImage = imageUrl;
+        });
     }
 
     // Introduce a 1-second delay before hiding the loading overlay
     setTimeout(hideLoadingOverlay, 1000);
-    
-    // Set random background on page load
-    setRandomBackground();
+
+    // Set random background on page load if .bg class elements exist
+    if (document.querySelector('.bg')) {
+        setRandomBackground();
+    }
 
     burgerMenu.addEventListener('click', function () {
         if (navLinks.classList.contains('show')) {

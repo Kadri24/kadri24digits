@@ -303,7 +303,7 @@ footer {
     .burger-menu {
         display: block;
         cursor: pointer;
-        z-index: 2;
+        z-index: 20;
     }
 
     .grid-container {
