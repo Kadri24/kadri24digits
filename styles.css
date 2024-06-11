@@ -75,7 +75,6 @@ a {
     background-color: #eee;
 }
 
-
 .cta-button {
     display: inline-block;
     padding: 10px 20px;
@@ -162,30 +161,78 @@ footer {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 10px;
-  }
-  
-  .grid-item {
+}
+
+.grid-item {
     background-color: #f2f2f2;
     text-align: center;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.grid-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.grid-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: to add a semi-transparent background */
+}
+
+.grid-text {
+    color: white;
+    font-size: 30px;
+    size: 100%;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.grid-button {
+    font-size: 20px;
+}
+
+.grid-button:hover {
+    color: #007baf;
+}
 
 ::-webkit-scrollbar {
     width: 10px;
-  }
-    ::-webkit-scrollbar-track {
-    background: #242424; 
-  }
-    ::-webkit-scrollbar-thumb {
-    background: #3f3f3f; 
-      border-radius:10px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    
-    background: #555; 
-  }
+}
+
+::-webkit-scrollbar-track {
+    background: #242424;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3f3f3f;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 
 /* Larger screens (desktops) */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1025px) {
     header {
         background-color: #242424;
         padding: 0;
@@ -194,7 +241,7 @@ footer {
         position: fixed;
         top: 0;
         width: 100%;
-        box-sizing: border-box
+        box-sizing: border-box;
     }
 
     .nav-links {
@@ -219,9 +266,9 @@ footer {
 
     .div1 {
         height: 60vh;
-      }
-      
-      .grid-container {
+    }
+
+    .grid-container {
         display: grid;
         top: 30%;
         justify-content: center;
@@ -230,23 +277,16 @@ footer {
         grid-template-rows: 30vh;
         grid-column-gap: 20px;
         padding: 0;
-      }
-      
+    }
+
     .grid-item {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 30px;
         text-align: center;
-      }
+    }
 
-      .grid-text {
-        top:-90px;
-        font-size: 30px;
-        width: 100%;
-        margin: 0;
-        position: relative;
-        color: #ffffff;
-      }
-      .socialdiv {
+
+    .socialdiv {
         height: 100vh;
         padding-top: 100px;
         width: 50%;
@@ -254,12 +294,56 @@ footer {
         margin-right: auto;
         text-align: center;
     }
-      .socialgrid {
+
+    .socialgrid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, 1fr);
         grid-column-gap: 0px;
         grid-row-gap: 0px;
+    }
+}
+
+/* Medium screens (tablets) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    header {
+        background-color: #242424;
+        padding: 0px;
+        padding-left: 20%;
+        padding-right: 20%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nav-links {
+        display: flex;
+    }
+
+    .burger-menu {
+        display: none;
+    }
+
+    .nav-links {
+        flex-direction: row;
+    }
+
+    .nav-links li {
+        margin: 0 10px;
+    }
+
+    .gamesdiv {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        font-size: 30px;
+        text-align: center;
     }
 }
 
@@ -272,7 +356,7 @@ footer {
         position: fixed;
         top: 0;
         width: 100%;
-        box-sizing: border-box
+        box-sizing: border-box;
     }
 
     .nav-links {
@@ -315,25 +399,15 @@ footer {
         grid-row-gap: 20px;
         padding: 0;
         justify-content: center;
-      }
-      
+    }
+
     .grid-item {
         background-color: rgba(255, 255, 255, 0.8);
         font-size: 30px;
         text-align: center;
-        
-      }
+    }
 
-      .grid-text {
-        top:-100px;
-        font-size: 25px;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        position: relative;
-      }
-
-      .socialdiv {
+    .socialdiv {
         height: 100vh;
         padding-top: 100px;
         margin-left: auto;
@@ -342,7 +416,7 @@ footer {
         width: auto;
     }
 
-      .socialgrid {
+    .socialgrid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(4, 1fr);
@@ -350,7 +424,22 @@ footer {
         grid-row-gap: 0px;
     }
 
-      .div1 {
+    .gamesdiv {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    .div1 {
         height: 100vh;
-      }
+    }
+
+    .grid-text {
+        color: white;
+        font-size: 20px;
+        size: 100%;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
 }
