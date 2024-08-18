@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Introduce a 1-second delay before hiding the loading overlay
-    setTimeout(hideLoadingOverlay, 1000);
+    setTimeout(hideLoadingOverlay, 200);
 
     // Set random background on page load if .bg class elements exist
     if (document.querySelector('.bg')) {
