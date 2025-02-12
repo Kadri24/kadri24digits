@@ -1,82 +1,215 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const navLinks = document.querySelector('.nav-links');
-    const burgerMenu = document.querySelector('.burger-menu');
-    const loadingOverlay = document.getElementById('loading-overlay');
-    const backgrounds = ['eyes0.png', 'eyes1.png', 'eyes2.png', 'eyes3.png', 'eyes4.png', 'eyes5.png'];
+document.addEventListener('DOMContentLoaded', function() {
+    // Add scrollbar width calculation at the start
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-    // Function to hide the loading overlay
-    function hideLoadingOverlay() {
-        // Set opacity to 0 to initiate the fade-out transition
-        loadingOverlay.style.opacity = 0;
-
-        // Wait for the transition to complete before hiding the overlay
+    // Add loading state variable
+    let isAnimating = false;
+    const background = document.querySelector('.background');
+    
+    // Add null check for background blur
+    if (background) {
         setTimeout(() => {
-            loadingOverlay.style.display = 'none';
-        }, 500); // Adjust the duration to match the transition duration in CSS
+            background.classList.add('blurred');
+        }, 0);
     }
 
-    // Function to select a random background image and apply it to elements with the "bg" class
-    function setRandomBackground() {
-        const randomIndex = Math.floor(Math.random() * backgrounds.length);
-        const randomBackground = backgrounds[randomIndex];
-        const imageUrl = `url("images/backgrounds/${randomBackground}")`;
-        document.querySelectorAll('.bg').forEach(element => {
-            element.style.backgroundImage = imageUrl;
+    // Hamburger menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Lightbox functionality
+    const lightbox = document.querySelector('.lightbox');
+    const lightboxImg = lightbox.querySelector('img'); // Use existing img instead of creating new one
+    const closeBtn = lightbox.querySelector('.close-lightbox');
+    const galleryImages = document.querySelectorAll('.gallery-img');
+    let currentAnimation = null;
+
+    function openLightbox(sourceImage) {
+        if (currentAnimation) {
+            currentAnimation.forEach(timeout => clearTimeout(timeout));
+        }
+        currentAnimation = [];
+
+        function setPosition(animate = true) {
+            const viewportWidth = document.documentElement.clientWidth;
+            const viewportHeight = window.innerHeight;
+            const aspectRatio = sourceImage.naturalHeight / sourceImage.naturalWidth;
+            
+            // First, calculate target size
+            const targetWidth = Math.min(viewportWidth * 0.9, viewportHeight * 1.6);
+            const targetHeight = targetWidth * aspectRatio;
+            
+            // Force hardware acceleration
+            lightboxImg.style.transform = 'translateZ(0)';
+            lightboxImg.style.willChange = 'top, left, width, height';
+            
+            if (!animate) {
+                lightboxImg.style.transition = 'none';
+            }
+            
+            lightboxImg.style.width = `${targetWidth}px`;
+            lightboxImg.style.height = `${targetHeight}px`;
+            lightboxImg.style.top = `${(viewportHeight - targetHeight) / 2}px`;
+            lightboxImg.style.left = `${(viewportWidth - targetWidth) / 2}px`;
+            
+            if (!animate) {
+                // Force reflow
+                lightboxImg.offsetHeight;
+                lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
+        }
+
+        // Initial setup
+        const rect = sourceImage.getBoundingClientRect();
+        lightboxImg.src = sourceImage.src;
+        lightboxImg.style.position = 'fixed';
+        lightboxImg.style.transition = 'none';
+        lightboxImg.style.display = 'block';
+        lightboxImg.style.width = `${rect.width}px`;
+        lightboxImg.style.height = `${rect.height}px`;
+        lightboxImg.style.top = `${rect.top}px`;
+        lightboxImg.style.left = `${rect.left}px`;
+        
+        // Force reflow before adding transitions
+        lightboxImg.offsetHeight;
+        
+        document.body.style.paddingRight = '12px';
+        document.body.classList.add('lightbox-open');
+
+        // Clean up old handler and create new one
+        if (window.lightboxResizeHandler) {
+            window.removeEventListener('resize', window.lightboxResizeHandler);
+        }
+        
+        window.lightboxResizeHandler = () => {
+            if (lightbox.classList.contains('active')) {
+                setPosition(false);
+            }
+        };
+        
+        window.addEventListener('resize', window.lightboxResizeHandler);
+        
+        // Start animation
+        requestAnimationFrame(() => {
+            lightbox.classList.add('active');
+            lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            setPosition(true);
+        });
+
+        currentAnimation.push(setTimeout(() => {
+            currentAnimation = null;
+        }, 400));
+    }
+
+    function closeLightbox() {
+        if (currentAnimation) {
+            currentAnimation.forEach(timeout => clearTimeout(timeout));
+        }
+        currentAnimation = [];
+
+        const sourceImage = [...galleryImages].find(img => img.src === lightboxImg.src);
+        if (sourceImage) {
+            const rect = sourceImage.getBoundingClientRect();
+            lightbox.classList.remove('active');
+            
+            lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+            Object.assign(lightboxImg.style, {
+                top: `${rect.top}px`,
+                left: `${rect.left}px`,
+                width: `${rect.width}px`,
+                height: `${rect.height}px`
+            });
+            
+            currentAnimation.push(setTimeout(() => {
+                window.removeEventListener('resize', window.lightboxResizeHandler);
+                document.body.classList.remove('lightbox-open');
+                document.body.style.paddingRight = '';
+                lightboxImg.removeAttribute('style');
+                lightboxImg.src = '';
+                lightboxImg.style.display = 'none';
+                currentAnimation = null;
+            }, 400));
+        } else {
+            // Immediate cleanup if something went wrong
+            lightbox.classList.remove('active');
+            document.body.classList.remove('lightbox-open');
+            document.body.style.paddingRight = '';
+            lightboxImg.removeAttribute('style');
+            lightboxImg.src = '';
+            lightboxImg.style.display = 'none';
+            currentAnimation = null;
+        }
+    }
+
+    galleryImages.forEach(img => {
+        img.addEventListener('click', () => openLightbox(img));
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox(); // Use the same closeLightbox function instead of immediate cleanup
+        }
+    });
+
+    // Custom Select Implementation
+    const customSelect = document.querySelector('.custom-select');
+    if (customSelect) { // Add null check
+        const selectSelected = customSelect.querySelector('.select-selected');
+        const selectItems = customSelect.querySelector('.select-items');
+        const hiddenInput = customSelect.querySelector('input[type="hidden"]');
+
+        selectSelected.addEventListener('click', function(e) {
+            e.stopPropagation();
+            selectSelected.classList.toggle('select-arrow-active');
+            selectItems.classList.toggle('select-hide');
+            customSelect.classList.toggle('active');
+        });
+
+        const selectOptions = selectItems.querySelectorAll('div');
+        selectOptions.forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.stopPropagation();
+                selectSelected.textContent = this.textContent;
+                hiddenInput.value = this.getAttribute('data-value');
+                selectItems.classList.add('select-hide');
+                selectSelected.classList.remove('select-arrow-active');
+                customSelect.classList.remove('active');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            selectItems.classList.add('select-hide');
+            selectSelected.classList.remove('select-arrow-active');
+            customSelect.classList.remove('active');
         });
     }
-
-    // Introduce a 1-second delay before hiding the loading overlay
-    setTimeout(hideLoadingOverlay, 200);
-
-    // Set random background on page load if .bg class elements exist
-    if (document.querySelector('.bg')) {
-        setRandomBackground();
-    }
-
-    burgerMenu.addEventListener('click', function () {
-        if (navLinks.classList.contains('show')) {
-            // If the menu is currently shown, hide it
-            navLinks.style.opacity = 0;
-
-            // Delay hiding the menu to allow time for the fade-out animation
-            setTimeout(() => {
-                navLinks.classList.remove('show');
-            }, 300);
-        } else {
-            // If the menu is hidden, show it
-            navLinks.classList.add('show');
-
-            // Delay showing the menu to allow time for the fade-in animation
-            setTimeout(() => {
-                navLinks.style.opacity = 1;
-            }, 50);
-        }
-    });
-
-    // Check if the screen size changes
-    window.addEventListener('resize', function () {
-        if (window.innerWidth > 768) {
-            // If the screen is larger than 768px, set opacity to visible
-            navLinks.style.opacity = 1;
-        } else if (window.innerWidth <= 768 && navLinks.classList.contains('show')) {
-            // If the screen is smaller than or equal to 768px and the menu is open, set opacity to visible
-            navLinks.style.opacity = 1;
-        }
-    });
-
-    // Close the menu if a click occurs outside of it only on mobile screens
-    document.addEventListener('click', function (event) {
-        const isClickInsideNav = navLinks.contains(event.target);
-        const isClickInsideBurger = burgerMenu.contains(event.target);
-
-        if (window.innerWidth <= 768 && !isClickInsideNav && !isClickInsideBurger) {
-            // If the click is outside the menu on a mobile screen, hide it
-            navLinks.style.opacity = 0;
-
-            // Delay hiding the menu to allow time for the fade-out animation
-            setTimeout(() => {
-                navLinks.classList.remove('show');
-            }, 300);
-        }
-    });
 });
+
+function validateEmail() {
+    const email = document.getElementById('email').value;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address');
+        return false;
+    }
+    return true;
+}

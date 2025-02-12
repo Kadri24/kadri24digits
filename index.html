@@ -1,82 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="images/logokadri.ico" type="image/x-icon">
-    <script src="script.js"></script>
-    <title>Kadri24 Digits</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456320153632859" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Kadri24 Digits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="assets/images/logokadri.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="./">
-                    <img src="images/logokadri.png" alt="Logo" style="width: 24px; transform: scale(2); margin-left: 20px;">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="./home">Home</a></li>
-                
-                <li><div class="dropdown">
-                    <a href="./games" class="listtext">Games</button>
-                    <div class="dropdown-content">
-                      <a href="https://www.roblox.com/games/1985320156">Eyes: the Horror Game</a>
-                      <a href="https://www.roblox.com/games/15881401834">Eyes: Scary Thriller</a>
-                      <a href="https://www.roblox.com/games/17495975310">Slendrina: The Cellar</a>
-                      <a href="https://www.roblox.com/games/7551909058">Slender The Eight Pages</a>
-                      <a href="https://www.roblox.com/games/14111049608">Infinite Obby</a>
-                      <a href="https://www.roblox.com/games/11597112435">P.T.</a>
-                      <a href="https://www.roblox.com/games/16265455099">Minesweeper</a>
-                      <a href="https://www.roblox.com/games/17565161581">Haunted Animatronics</a>
-                    </div>
-                  </div></li>
-                <li><a href="./comingsoon" class="listtext">Shop</a></li>
-                <li><a href="./socials" class="listtext">Socials</a></li>
-                <li><a href="./contact" class="listtext">Contact</a></li>
-            </ul>
-            <div class="burger-menu" style="color: #fff; font-size: 20px;">&#9776;</div>
-        </nav>
-    </header>
-
-    <div id="loading-overlay">
-        <div id="loading-spinner">
-            <img src="images/logokadri.png" style="width: 20vh;" alt="loading">
+  <header class="header">
+    <nav class="nav-container">
+      <button class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links desktop-nav">
+        <li class="logo-item">
+          <a href="#" class="logo-link">
+            <img src="assets/images/logokadri.png" alt="Kadri24 Logo" class="logo">
+          </a>
+        </li>
+        <li><a href="#">Home</a></li>
+        <li><a href="games">Games</a></li>
+        <li><a href="shop">Shop</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+      <a href="#" class="logo-link mobile-logo">
+        <img src="assets/images/logokadri.png" alt="Kadri24 Logo" class="logo">
+      </a>
+    </nav>
+  </header>
+  <div class="main">
+    <div class="background"></div>
+    <div class="content">
+      <h1 class="title">Kadri24 Digits</h1>
+    </div>
+  </div>
+  <section class="featured-section">
+    <h2 class="section-title">Our Games</h2>
+    <div class="featured-games">
+      <a href="eyes-the-horror-game" class="game-card">
+        <img src="assets/images/eyeshorror.png" alt="Eyes The Horror Game">
+        <div class="game-info">
+          <h3>Eyes The Horror Game</h3>
         </div>
+      </a>
+      <a href="eyes-scary-thriller" class="game-card">
+        <img src="assets/images/eyesthriller.png" alt="Eyes - Scary Thriller: Horror">
+        <div class="game-info">
+          <h3>Eyes - Scary Thriller: Horror</h3>
+        </div>
+      </a>
+      <a href="kpf" class="game-card">
+        <img src="assets/images/kpf.png" alt="KPF - Kappa Professional Football">
+        <div class="game-info">
+          <h3>KPF - Kappa Professional Football</h3>
+        </div>
+      </a>
+      <a href="slendrina" class="game-card">
+        <img src="assets/images/slendrina.png" alt="Slendrina The Cellar">
+        <div class="game-info">
+          <h3>Slendrina The Cellar</h3>
+        </div>
+      </a>
+      <a href="slender" class="game-card">
+        <img src="assets/images/slenderthe8pages.png" alt="Slender The Eight Pages">
+        <div class="game-info">
+          <h3>Slender The Eight Pages</h3>
+        </div>
+      </a>
     </div>
-
-    <div class="bg" style="height: 100vh;">
-        <h1 style="text-align: center; position: relative; top: 50vh; margin: 0px; color: #fff; font-size: 5vh; font-family: Arial, Helvetica, sans-serif;">Kadri24 Digits</h1>
+  </section>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Kadri24 Digits. All rights reserved.</p>
     </div>
-    <div class="div1" style="position: relative;">
-        <h1 style="position: relative; top: 10%; width: 100%; text-align: center; padding: 0; margin: 0; font-size: 30px">Featured Games</h1>
-        <div class="grid-container" style="width: 100%; height: 400px; position: absolute;">
-            <div class="grid-item" style="background-image: url(images/eyeshorror.png); background-size: cover; background-position: center">
-                <a href="https://www.roblox.com/games/1985320156/" style="position: relative; top: 70%; text-align: center;">
-                    <h4 class="selector">Play</h4>
-                </a>
-                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative; color: #ffffff;">Eyes - The Horror Game</h3>
-            </div>
-            <div class="grid-item" style="background-image: url(images/eyesthriller.png); background-size: cover; background-position: center">
-                <a href="https://www.roblox.com/games/15881401834/" style="position: relative; top: 70%; text-align: center;">
-                    <h4 class="selector">Play</h4>
-                </a>
-                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative; color: #ffffff;">Eyes: Scary Thriller</h3>
-            </div>
-            <div class="grid-item" style="background-image: url(images/slendrina.png); background-size: cover; background-position: center;">
-                <a href="https://www.roblox.com/games/17495975310/" style="position: relative; top: 70%; text-align: center;">
-                    <h4 class="selector">Play</h4>
-                </a>
-                <h3 class="grid-text" style="width: 100%; margin: 0; position: relative; color: #ffffff;">Slendrina: the Cellar</h3>
-            </div>  
-          </div>
-    </div>
-    
-    <footer>
-        <p>&copy; 2025 <a href="https://kadri24digits.com" style="color: #007baf;">kadri24digits.com</a>. All rights reserved.</p>
-    </footer>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>

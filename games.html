@@ -1,117 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="images/logokadri.ico" type="image/x-icon">
-    <script src="script.js"></script>
-    <title>Kadri24 Digits</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456320153632859" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Games - Kadri24 Digits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="games-page.css">
+  <link rel="shortcut icon" href="assets/images/logokadri.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="./">
-                    <img src="images/logokadri.png" alt="Logo" style="width: 24px; transform: scale(2); margin-left: 20px;">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="./home" class="listtext">Home</a></li>
-                
-                <li><div class="dropdown">
-                    <a href="./games">Games</button>
-                    <div class="dropdown-content">
-                      <a href="https://www.roblox.com/games/1985320156">Eyes: the Horror Game</a>
-                      <a href="https://www.roblox.com/games/15881401834">Eyes: Scary Thriller</a>
-                      <a href="https://www.roblox.com/games/17495975310">Slendrina: The Cellar</a>
-                      <a href="https://www.roblox.com/games/7551909058">Slender The Eight Pages</a>
-                      <a href="https://www.roblox.com/games/14111049608">Infinite Obby</a>
-                      <a href="https://www.roblox.com/games/11597112435">P.T.</a>
-                      <a href="https://www.roblox.com/games/16265455099">Minesweeper</a>
-                      <a href="https://www.roblox.com/games/17565161581">Haunted Animatronics</a>
-                    </div>
-                  </div></li>
-                <li><a href="./comingsoon" class="listtext">Shop</a></li>
-                <li><a href="./socials" class="listtext">Socials</a></li>
-                <li><a href="./contact" class="listtext">Contact</a></li>
-            </ul>
-            <div class="burger-menu" style="color: #fff; font-size: 20px;">&#9776;</div>
-        </nav>
-    </header>
+  <header class="header">
+    <nav class="nav-container">
+      <button class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links desktop-nav">
+        <li class="logo-item">
+          <a href="index" class="logo-link">
+            <img src="assets/images/logokadri.png" alt="Kadri24 Logo" class="logo">
+          </a>
+        </li>
+        <li><a href="index">Home</a></li>
+        <li><a href="games">Games</a></li>
+        <li><a href="shop">Shop</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+      <a href="index" class="logo-link mobile-logo">
+        <img src="assets/images/logokadri.png" alt="Kadri24 Logo" class="logo">
+      </a>
+    </nav>
+  </header>
 
-    <div id="loading-overlay">
-        <div id="loading-spinner">
-            <img src="images/logokadri.png" style="width: 20vh;" alt="loading">
-        </div>
+  <div class="games-hero">
+    <div class="games-background"></div>
+    <div class="games-hero-content">
+      <h1>Our Games</h1>
+      <p>Explore our collection of immersive gaming experiences</p>
     </div>
+  </div>
 
-    <div class="bg" style="height: 100vh;">
-        <h1 style="text-align: center; position: relative; top: 50vh; margin: 0px; color: #fff; font-size: 5vh; font-family: Arial, Helvetica, sans-serif;">Games</h1>
-    </div>
-    <h1 style="position: relative; top: 50px; width: 100%; text-align: center; padding: 0; margin: 0; font-size: 30px">Our games</h1>
-    <div class="gamesdiv" style="margin-top: 100px; margin-bottom: 100px; padding-left: 10%; padding-right: 10%;">
-        <div class="gridgame-item">
-            <img src="images/eyeshorror.png" alt="Eyes1" class="grid-image">
-            <div class="grid-overlay">
-                <p class="grid-text">Eyes: the Horror Game</p>
-                <a href="https://www.roblox.com/games/1985320156" class="grid-button">Play</a>
-            </div>
+  <main class="games-main">
+    <div class="games-grid">
+      <a href="eyes-the-horror-game" class="game-item">
+        <div class="game-image">
+          <img src="assets/images/eyeshorror.png" alt="Eyes The Horror Game">
+          <div class="game-overlay">
+            <i class="fa-solid fa-ghost"></i>
+            <span>Horror</span>
+          </div>
         </div>
-        <div class="gridgame-item">
-            <img src="images/eyesthriller.png" alt="Eyes2" class="grid-image">
-            <div class="grid-overlay">
-                <p class="grid-text">Eyes: Scary Thriller</p>
-                <a href="https://www.roblox.com/games/15881401834" class="grid-button">Play</a>
-            </div>
+        <div class="game-details">
+          <h2>Eyes The Horror Game</h2>
+          <p>Survive the haunting presence of Krasue in this atmospheric horror game.</p>
         </div>
-        <div class="gridgame-item">
-            <img src="images/slendrina.png" alt="Slendrina" class="grid-image">
-            <div class="grid-overlay">
-                <p class="grid-text">Slendrina: the Cellar</p>
-                <a href="https://www.roblox.com/games/17495975310" class="grid-button">Play</a>
-            </div>
-        </div>
-        <div class="gridgame-item">
-            <img src="images/slender.png" alt="Slender" class="grid-image">
-            <div class="grid-overlay">
-                <p class="grid-text">Slender the Eight Pages</p>
-                <a href="https://www.roblox.com/games/7551909058" class="grid-button">Play</a>
-            </div>
-        </div>
-        <div class="gridgame-item">
-            <img src="images/infiniteobby.png" alt="Infinite Obby" class="grid-image">
-            <div class="grid-overlay">
-                <p class="grid-text">Infinite Obby</p>
-                <a href="https://www.roblox.com/games/14111049608" class="grid-button">Play</a>
-            </div>
-        </div>
-        <div class="gridgame-item">
-            <img src="images/pt2.png" alt="PT" class="grid-image">
-            <div class="grid-overlay">
-                <p class="grid-text">PT</p>
-                <a href="https://www.roblox.com/games/11597112435" class="grid-button">Play</a>
-            </div>
-        </div>
-        <div class="gridgame-item">
-            <img src="images/minesweeper.png" alt="Minesweeper" class="grid-image">
-            <div class="grid-overlay">
-                <p class="grid-text">Minesweeper</p>
-                <a href="https://www.roblox.com/games/16265455099" class="grid-button">Play</a>
-            </div>
-        </div>
-        <div class="gridgame-item">
-            <img src="images/hanuntedanimatronics.png" alt="Haunter Animatronics" class="grid-image">
-            <div class="grid-overlay">
-                <p class="grid-text">Haunted Animatronics</p>
-                <a href="https://www.roblox.com/games/17565161581" class="grid-button">Play</a>
-            </div>
-        </div>
-    </div>
+      </a>
 
-    <footer>
-        <p>&copy; 2025 <a href="https://kadri24digits.com" style="color: #007baf;">kadri24digits.com</a>. All rights reserved.</p>
-    </footer>
+      <a href="eyes-scary-thriller" class="game-item">
+        <div class="game-image">
+          <img src="assets/images/eyesthriller.png" alt="Eyes - Scary Thriller">
+          <div class="game-overlay">
+            <i class="fa-solid fa-ghost"></i>
+            <span>Horror</span>
+          </div>
+        </div>
+        <div class="game-details">
+          <h2>Eyes - Scary Thriller</h2>
+          <p>A reimagined horror experience with enhanced gameplay and new terrors.</p>
+        </div>
+      </a>
+
+      <a href="kpf" class="game-item">
+        <div class="game-image">
+          <img src="assets/images/kpf.png" alt="KPF">
+          <div class="game-overlay">
+            <i class="fa-solid fa-futbol"></i>
+            <span>Sports</span>
+          </div>
+        </div>
+        <div class="game-details">
+          <h2>KPF - Kappa Professional Football</h2>
+          <p>Experience the thrill of professional football in this team-based sports game.</p>
+        </div>
+      </a>
+
+      <a href="slendrina" class="game-item">
+        <div class="game-image">
+          <img src="assets/images/slendrina.png" alt="Slendrina">
+          <div class="game-overlay">
+            <i class="fa-solid fa-ghost"></i>
+            <span>Horror</span>
+          </div>
+        </div>
+        <div class="game-details">
+          <h2>Slendrina The Cellar</h2>
+          <p>Escape the terrifying Slendrina in this haunting survival horror game.</p>
+        </div>
+      </a>
+
+      <a href="slender" class="game-item">
+        <div class="game-image">
+          <img src="assets/images/slenderthe8pages.png" alt="Slender">
+          <div class="game-overlay">
+            <i class="fa-solid fa-ghost"></i>
+            <span>Horror</span>
+          </div>
+        </div>
+        <div class="game-details">
+          <h2>Slender The Eight Pages</h2>
+          <p>Collect all eight pages while avoiding the mysterious Slender Man.</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Kadri24 Digits. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>

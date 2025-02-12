@@ -1,61 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="images/logokadri.ico" type="image/x-icon">
-    <script src="script.js"></script>
-    <title>Kadri24 Digits</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5456320153632859" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Contact Us - Kadri24 Digits</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="contact-page.css">
+  <link rel="shortcut icon" href="assets/images/logokadri.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="./">
-                    <img src="images/logokadri.png" alt="Logo" style="width: 24px; transform: scale(2); margin-left: 20px;">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="./home" class="listtext">Home</a></li>
-                
-                <li><div class="dropdown">
-                    <a href="./games" class="listtext">Games</button>
-                    <div class="dropdown-content">
-                      <a href="https://www.roblox.com/games/1985320156">Eyes: the Horror Game</a>
-                      <a href="https://www.roblox.com/games/15881401834">Eyes: Scary Thriller</a>
-                      <a href="https://www.roblox.com/games/17495975310">Slendrina: The Cellar</a>
-                      <a href="https://www.roblox.com/games/7551909058">Slender The Eight Pages</a>
-                      <a href="https://www.roblox.com/games/14111049608">Infinite Obby</a>
-                      <a href="https://www.roblox.com/games/11597112435">P.T.</a>
-                      <a href="https://www.roblox.com/games/16265455099">Minesweeper</a>
-                      <a href="https://www.roblox.com/games/17565161581">Haunted Animatronics</a>
-                    </div>
-                  </div></li>
-                <li><a href="./comingsoon" class="listtext">Shop</a></li>
-                <li><a href="./socials" class="listtext">Socials</a></li>
-                <li><a href="./contact">Contact</a></li>
-            </ul>
-            <div class="burger-menu" style="color: #fff; font-size: 20px;">&#9776;</div>
-        </nav>
-    </header>
-    <div id="loading-overlay">
-        <div id="loading-spinner">
-            <img src="images/logokadri.png" style="width: 20vh;" alt="loading">
-        </div>
-    </div>
-    <div class="bg" style="height: 100vh;">
-        <h1 style="text-align: center; position: relative; top: 50vh; margin: 0px; color: #fff; font-size: 5vh; font-family: Arial, Helvetica, sans-serif;">Contact</h1>
-    </div>
-    <div style="height: 250vh;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfNbMCba1VGx9XrCmTE26waQL6MX69BnT8ymXIbi9mNxTEcBA/viewform?embedded=true" width="100%" height="90%" frameborder="0" marginheight="0" marginwidth="0" style="padding-top: 40px;">Loading…</iframe>
-    </div>
-    <footer>
-        <p>&copy; 2025 <a href="https://kadri24digits.com" style="color: #007baf;">kadri24digits.com</a>. All rights reserved.</p>
-    </footer>
-</body>
+  <header class="header">
+    <nav class="nav-container">
+      <button class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <ul class="nav-links desktop-nav">
+        <li class="logo-item">
+          <a href="index" class="logo-link">
+            <img src="assets/images/logokadri.png" alt="Kadri24 Logo" class="logo">
+          </a>
+        </li>
+        <li><a href="index">Home</a></li>
+        <li><a href="games">Games</a></li>
+        <li><a href="shop">Shop</a></li>
+        <li><a href="contact">Contact</a></li>
+      </ul>
+      <a href="index" class="logo-link mobile-logo">
+        <img src="assets/images/logokadri.png" alt="Kadri24 Logo" class="logo">
+      </a>
+    </nav>
+  </header>
 
+  <main class="contact-main">
+    <div class="contact-container">
+      <div class="contact-content">
+        <h1>Contact Us</h1>
+        <p>Get in touch with us. We'd love to hear from you!</p>
+        
+        <form action="https://fabform.io/f/GMPj2HN" method="post" class="contact-form" onsubmit="return validateEmail()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic" required>
+                <option value="" disabled selected>Choose Your Subject</option>
+                <option value="shop">Shop Support</option>
+                <option value="partnership">Partnership and Business Inquiries</option>
+                <option value="feedback">Feedback and Suggestions</option>
+                <option value="technical">Technical Support</option>
+                <option value="banappeal">Ban Appeal</option>
+                <option value="bug">Bug Report</option>
+                <option value="account">Account Issues</option>
+                <option value="payment">Payment Issues</option>
+                <option value="moderation">Moderation Team Contact</option>
+                <option value="media">Media & Press Inquiries</option>
+                <option value="general">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            <span>Send Message</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Kadri24 Digits. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
 </html>
