@@ -380,6 +380,8 @@ body {
         z-index: 999;
         margin: 0;
         overflow-y: auto;
+        pointer-events: none; /* Prevent interaction when closed */
+        visibility: hidden; /* Hide from screen readers and clicks */
     }
 
     .nav-links.active {
@@ -387,6 +389,8 @@ body {
         top: 44px;
         opacity: 1;
         max-height: calc(100vh - 44px);
+        pointer-events: all; /* Enable interaction when open */
+        visibility: visible; /* Make visible to screen readers and clicks */
     }
 
     .nav-links li {
