@@ -15,11 +15,16 @@ body.lightbox-open {
 }
 
 .header {
-    position: sticky;
+    background-color: #fff;
+    border-bottom: 1px solid #d2d2d2;
+    height: 44px;
+    box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
+    position: absolute; /* Change from relative to absolute */
+    width: 100vw; /* Full viewport width */
+    z-index: 9999;
     top: 0;
     left: 0;
     right: 0;
-    width: 100vw;
     margin-right: calc(var(--scrollbar-width) * -1);
 }
 
@@ -44,7 +49,7 @@ body.lightbox-open {
     background-image: url("assets/images/eyeshorror.png");
     background-size: cover;
     background-position: center;
-    filter: blur(8px);
+    filter: blur(1vh);
     z-index: -1;
     transform: scale(1.1);
 }
