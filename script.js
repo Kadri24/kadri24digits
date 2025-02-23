@@ -47,143 +47,148 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Lightbox functionality
+    // Lightbox functionality - Add null checks
     const lightbox = document.querySelector('.lightbox');
-    const lightboxImg = lightbox.querySelector('img'); // Use existing img instead of creating new one
-    const closeBtn = lightbox.querySelector('.close-lightbox');
-    const galleryImages = document.querySelectorAll('.gallery-img');
-    let currentAnimation = null;
+    if (lightbox) { // Only initialize lightbox functionality if element exists
+        const lightboxImg = lightbox.querySelector('img');
+        const closeBtn = lightbox.querySelector('.close-lightbox');
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        let currentAnimation = null;
 
-    function openLightbox(sourceImage) {
-        if (currentAnimation) {
-            currentAnimation.forEach(timeout => clearTimeout(timeout));
-        }
-        currentAnimation = [];
+        // Only set up lightbox events if we have both the lightbox and gallery images
+        if (lightboxImg && closeBtn && galleryImages.length > 0) {
+            function openLightbox(sourceImage) {
+                if (currentAnimation) {
+                    currentAnimation.forEach(timeout => clearTimeout(timeout));
+                }
+                currentAnimation = [];
 
-        function setPosition(animate = true) {
-            const viewportWidth = document.documentElement.clientWidth;
-            const viewportHeight = window.innerHeight;
-            const aspectRatio = sourceImage.naturalHeight / sourceImage.naturalWidth;
-            
-            // First, calculate target size
-            const targetWidth = Math.min(viewportWidth * 0.9, viewportHeight * 1.6);
-            const targetHeight = targetWidth * aspectRatio;
-            
-            // Force hardware acceleration
-            lightboxImg.style.transform = 'translateZ(0)';
-            lightboxImg.style.willChange = 'top, left, width, height';
-            
-            if (!animate) {
+                function setPosition(animate = true) {
+                    const viewportWidth = document.documentElement.clientWidth;
+                    const viewportHeight = window.innerHeight;
+                    const aspectRatio = sourceImage.naturalHeight / sourceImage.naturalWidth;
+                    
+                    // First, calculate target size
+                    const targetWidth = Math.min(viewportWidth * 0.9, viewportHeight * 1.6);
+                    const targetHeight = targetWidth * aspectRatio;
+                    
+                    // Force hardware acceleration
+                    lightboxImg.style.transform = 'translateZ(0)';
+                    lightboxImg.style.willChange = 'top, left, width, height';
+                    
+                    if (!animate) {
+                        lightboxImg.style.transition = 'none';
+                    }
+                    
+                    lightboxImg.style.width = `${targetWidth}px`;
+                    lightboxImg.style.height = `${targetHeight}px`;
+                    lightboxImg.style.top = `${(viewportHeight - targetHeight) / 2}px`;
+                    lightboxImg.style.left = `${(viewportWidth - targetWidth) / 2}px`;
+                    
+                    if (!animate) {
+                        // Force reflow
+                        lightboxImg.offsetHeight;
+                        lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                    }
+                }
+
+                // Initial setup
+                const rect = sourceImage.getBoundingClientRect();
+                lightboxImg.src = sourceImage.src;
+                lightboxImg.style.position = 'fixed';
                 lightboxImg.style.transition = 'none';
-            }
-            
-            lightboxImg.style.width = `${targetWidth}px`;
-            lightboxImg.style.height = `${targetHeight}px`;
-            lightboxImg.style.top = `${(viewportHeight - targetHeight) / 2}px`;
-            lightboxImg.style.left = `${(viewportWidth - targetWidth) / 2}px`;
-            
-            if (!animate) {
-                // Force reflow
+                lightboxImg.style.display = 'block';
+                lightboxImg.style.width = `${rect.width}px`;
+                lightboxImg.style.height = `${rect.height}px`;
+                lightboxImg.style.top = `${rect.top}px`;
+                lightboxImg.style.left = `${rect.left}px`;
+                
+                // Force reflow before adding transitions
                 lightboxImg.offsetHeight;
-                lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                
+                document.body.style.paddingRight = '12px';
+                document.body.classList.add('lightbox-open');
+
+                // Clean up old handler and create new one
+                if (window.lightboxResizeHandler) {
+                    window.removeEventListener('resize', window.lightboxResizeHandler);
+                }
+                
+                window.lightboxResizeHandler = () => {
+                    if (lightbox.classList.contains('active')) {
+                        setPosition(false);
+                    }
+                };
+                
+                window.addEventListener('resize', window.lightboxResizeHandler);
+                
+                // Start animation
+                requestAnimationFrame(() => {
+                    lightbox.classList.add('active');
+                    lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                    setPosition(true);
+                });
+
+                currentAnimation.push(setTimeout(() => {
+                    currentAnimation = null;
+                }, 400));
             }
-        }
 
-        // Initial setup
-        const rect = sourceImage.getBoundingClientRect();
-        lightboxImg.src = sourceImage.src;
-        lightboxImg.style.position = 'fixed';
-        lightboxImg.style.transition = 'none';
-        lightboxImg.style.display = 'block';
-        lightboxImg.style.width = `${rect.width}px`;
-        lightboxImg.style.height = `${rect.height}px`;
-        lightboxImg.style.top = `${rect.top}px`;
-        lightboxImg.style.left = `${rect.left}px`;
-        
-        // Force reflow before adding transitions
-        lightboxImg.offsetHeight;
-        
-        document.body.style.paddingRight = '12px';
-        document.body.classList.add('lightbox-open');
+            function closeLightbox() {
+                if (currentAnimation) {
+                    currentAnimation.forEach(timeout => clearTimeout(timeout));
+                }
+                currentAnimation = [];
 
-        // Clean up old handler and create new one
-        if (window.lightboxResizeHandler) {
-            window.removeEventListener('resize', window.lightboxResizeHandler);
-        }
-        
-        window.lightboxResizeHandler = () => {
-            if (lightbox.classList.contains('active')) {
-                setPosition(false);
+                const sourceImage = [...galleryImages].find(img => img.src === lightboxImg.src);
+                if (sourceImage) {
+                    const rect = sourceImage.getBoundingClientRect();
+                    lightbox.classList.remove('active');
+                    
+                    lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                    Object.assign(lightboxImg.style, {
+                        top: `${rect.top}px`,
+                        left: `${rect.left}px`,
+                        width: `${rect.width}px`,
+                        height: `${rect.height}px`
+                    });
+                    
+                    currentAnimation.push(setTimeout(() => {
+                        window.removeEventListener('resize', window.lightboxResizeHandler);
+                        document.body.classList.remove('lightbox-open');
+                        document.body.style.paddingRight = '';
+                        lightboxImg.removeAttribute('style');
+                        lightboxImg.src = '';
+                        lightboxImg.style.display = 'none';
+                        currentAnimation = null;
+                    }, 400));
+                } else {
+                    // Immediate cleanup if something went wrong
+                    lightbox.classList.remove('active');
+                    document.body.classList.remove('lightbox-open');
+                    document.body.style.paddingRight = '';
+                    lightboxImg.removeAttribute('style');
+                    lightboxImg.src = '';
+                    lightboxImg.style.display = 'none';
+                    currentAnimation = null;
+                }
             }
-        };
-        
-        window.addEventListener('resize', window.lightboxResizeHandler);
-        
-        // Start animation
-        requestAnimationFrame(() => {
-            lightbox.classList.add('active');
-            lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-            setPosition(true);
-        });
 
-        currentAnimation.push(setTimeout(() => {
-            currentAnimation = null;
-        }, 400));
-    }
-
-    function closeLightbox() {
-        if (currentAnimation) {
-            currentAnimation.forEach(timeout => clearTimeout(timeout));
-        }
-        currentAnimation = [];
-
-        const sourceImage = [...galleryImages].find(img => img.src === lightboxImg.src);
-        if (sourceImage) {
-            const rect = sourceImage.getBoundingClientRect();
-            lightbox.classList.remove('active');
-            
-            lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-            Object.assign(lightboxImg.style, {
-                top: `${rect.top}px`,
-                left: `${rect.left}px`,
-                width: `${rect.width}px`,
-                height: `${rect.height}px`
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => openLightbox(img));
             });
-            
-            currentAnimation.push(setTimeout(() => {
-                window.removeEventListener('resize', window.lightboxResizeHandler);
-                document.body.classList.remove('lightbox-open');
-                document.body.style.paddingRight = '';
-                lightboxImg.removeAttribute('style');
-                lightboxImg.src = '';
-                lightboxImg.style.display = 'none';
-                currentAnimation = null;
-            }, 400));
-        } else {
-            // Immediate cleanup if something went wrong
-            lightbox.classList.remove('active');
-            document.body.classList.remove('lightbox-open');
-            document.body.style.paddingRight = '';
-            lightboxImg.removeAttribute('style');
-            lightboxImg.src = '';
-            lightboxImg.style.display = 'none';
-            currentAnimation = null;
+
+            closeBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', e => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox(); // Use the same closeLightbox function instead of immediate cleanup
+                }
+            });
         }
     }
-
-    galleryImages.forEach(img => {
-        img.addEventListener('click', () => openLightbox(img));
-    });
-
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', e => {
-        if (e.target === lightbox) closeLightbox();
-    });
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox(); // Use the same closeLightbox function instead of immediate cleanup
-        }
-    });
 
     // Custom Select Implementation
     const customSelect = document.querySelector('.custom-select');
