@@ -8,6 +8,36 @@
     --scrollbar-width: 0px;
 }
 
+/* Add no-transition class to disable animations */
+.no-transition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
+
+/* Fix overlay to cover entire page when scrolling */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+    z-index: 997; /* Below navbar but above other content */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s linear, visibility 0.3s linear; /* Linear transition */
+    pointer-events: none; /* Allow clicks to pass through when hidden */
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; /* Capture clicks when visible */
+}
+
 html {
     overflow-y: scroll; /* Always show scrollbar */
 }

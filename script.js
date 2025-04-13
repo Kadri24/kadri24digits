@@ -16,11 +16,44 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hamburger menu
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.overlay');
     const links = document.querySelectorAll('.nav-links a');
 
+    // Toggle mobile menu and overlay
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('active');
+        
+        // Toggle the overlay
+        if (navLinks.classList.contains('active')) {
+            overlay.classList.add('active');
+        } else {
+            overlay.classList.remove('active');
+        }
+    });
+
+    // Add resize handler to prevent animation during window resizing
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        // Add the no-transition class
+        navLinks.classList.add('no-transition');
+        overlay.classList.add('no-transition');
+        
+        // If window is smaller than 768px and menu is active, close it without animation
+        if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+        
+        // Clear the existing timer
+        clearTimeout(resizeTimer);
+        
+        // Set a timer to remove the no-transition class after resize is complete
+        resizeTimer = setTimeout(function() {
+            navLinks.classList.remove('no-transition');
+            overlay.classList.remove('no-transition');
+        }, 100);
     });
 
     // Close menu when clicking outside
@@ -28,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
+            overlay.classList.remove('active');
         }
     });
 
@@ -36,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
             hamburger.classList.remove('active');
+            overlay.classList.remove('active');
         });
     });
 
@@ -44,7 +79,17 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
+            overlay.classList.remove('active');
         });
+    });
+
+    // Handle overlay click to close menu
+    overlay.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+            overlay.classList.remove('active');
+        }
     });
 
     // Lightbox functionality - Add null checks
