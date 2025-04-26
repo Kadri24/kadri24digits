@@ -17,80 +17,95 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const overlay = document.querySelector('.overlay');
-    const links = document.querySelectorAll('.nav-links a');
+    const links = document.querySelectorAll('.nav-links li');
 
-    // Toggle mobile menu and overlay
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-        
-        // Toggle the overlay
-        if (navLinks.classList.contains('active')) {
-            overlay.classList.add('active');
-        } else {
-            overlay.classList.remove('active');
-        }
-    });
+    // Check if elements exist before adding event listeners
+    if (hamburger && navLinks && overlay) {
+        hamburger.addEventListener('click', () => {
+            // Toggle Nav
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            overlay.classList.toggle('active');
 
-    // Add resize handler to prevent animation during window resizing
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-        // Add the no-transition class
-        navLinks.classList.add('no-transition');
-        overlay.classList.add('no-transition');
-        
-        // If window is smaller than 768px and menu is active, close it without animation
-        if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-        
-        // Clear the existing timer
-        clearTimeout(resizeTimer);
-        
-        // Set a timer to remove the no-transition class after resize is complete
-        resizeTimer = setTimeout(function() {
-            navLinks.classList.remove('no-transition');
-            overlay.classList.remove('no-transition');
-        }, 100);
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-    });
-
-    // Close menu when link is clicked
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-            overlay.classList.remove('active');
+            // Animate Links
+            links.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
         });
-    });
 
-    // Close menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            overlay.classList.remove('active');
+        // Add transitionend listener to overlay to remove animation class
+        overlay.addEventListener('transitionend', () => {
+            if (overlay.classList.contains('active')) {
+                // Keep animation styles if active
+            } else {
+                overlay.classList.remove('active');
+            }
         });
-    });
 
-    // Handle overlay click to close menu
-    overlay.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
-            overlay.classList.remove('active');
-        }
-    });
+        // Add resize handler to prevent animation during window resizing
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            // Add the no-transition class
+            navLinks.classList.add('no-transition');
+            overlay.classList.add('no-transition');
+            
+            // If window is smaller than 768px and menu is active, close it without animation
+            if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+            
+            // Clear the existing timer
+            clearTimeout(resizeTimer);
+            
+            // Set a timer to remove the no-transition class after resize is complete
+            resizeTimer = setTimeout(function() {
+                navLinks.classList.remove('no-transition');
+                overlay.classList.remove('no-transition');
+            }, 100);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !hamburger.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Close menu when link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+
+        // Handle overlay click to close menu
+        overlay.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+    }
 
     // Lightbox functionality - Add null checks
     const lightbox = document.querySelector('.lightbox');
@@ -99,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const closeBtn = lightbox.querySelector('.close-lightbox');
         const galleryImages = document.querySelectorAll('.gallery-img');
         let currentAnimation = null;
+        let initialRect = null; // Variable to store the initial position/size
 
         // Only set up lightbox events if we have both the lightbox and gallery images
         if (lightboxImg && closeBtn && galleryImages.length > 0) {
@@ -139,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Initial setup
                 const rect = sourceImage.getBoundingClientRect();
+                initialRect = rect; // Store the initial rect
                 lightboxImg.src = sourceImage.src;
                 lightboxImg.style.position = 'fixed';
                 lightboxImg.style.transition = 'none';
@@ -186,18 +203,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentAnimation = [];
 
                 const sourceImage = [...galleryImages].find(img => img.src === lightboxImg.src);
-                if (sourceImage) {
-                    const rect = sourceImage.getBoundingClientRect();
+                // Use the stored initialRect if available
+                if (sourceImage && initialRect) {
+                    // const rect = sourceImage.getBoundingClientRect(); // No longer needed
                     lightbox.classList.remove('active');
-                    
+
                     lightboxImg.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
                     Object.assign(lightboxImg.style, {
-                        top: `${rect.top}px`,
-                        left: `${rect.left}px`,
-                        width: `${rect.width}px`,
-                        height: `${rect.height}px`
+                        top: `${initialRect.top}px`, // Use stored value
+                        left: `${initialRect.left}px`, // Use stored value
+                        width: `${initialRect.width}px`, // Use stored value
+                        height: `${initialRect.height}px` // Use stored value
                     });
-                    
+
                     currentAnimation.push(setTimeout(() => {
                         window.removeEventListener('resize', window.lightboxResizeHandler);
                         document.body.classList.remove('lightbox-open');
@@ -206,9 +224,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         lightboxImg.src = '';
                         lightboxImg.style.display = 'none';
                         currentAnimation = null;
+                        initialRect = null; // Reset stored rect
                     }, 400));
                 } else {
-                    // Immediate cleanup if something went wrong
+                    // Immediate cleanup if something went wrong or initialRect missing
                     lightbox.classList.remove('active');
                     document.body.classList.remove('lightbox-open');
                     document.body.style.paddingRight = '';
@@ -216,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     lightboxImg.src = '';
                     lightboxImg.style.display = 'none';
                     currentAnimation = null;
+                    initialRect = null; // Reset stored rect
                 }
             }
 
