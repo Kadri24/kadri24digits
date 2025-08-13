@@ -11,10 +11,6 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-// GSAP + ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
-lenis.on('scroll', ScrollTrigger.update);
 
 document.addEventListener('DOMContentLoaded', function() {
     // Add scrollbar width calculation at the start
